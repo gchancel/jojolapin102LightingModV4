@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<InstalLog Project="jojolapin102LightingModV4" Build_date="20/05/2023 18:04:49">
+  <Files>
+    <Directory Path="C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4">
+      <Directory Path="C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content">
+        <file>C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content\blob0.bundle</file>
+        <file>C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content\metadata.store</file>
+        <Directory Path="C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content\scripts">
+          <Directory Path="C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content\scripts\game">
+            <Directory Path="C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content\scripts\game\gui">
+              <Directory Path="C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content\scripts\game\gui\main_menu">
+                <file>C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content\scripts\game\gui\main_menu\ingameMenu.ws</file>
+              </Directory>
+            </Directory>
+            <Directory Path="C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content\scripts\game\player">
+              <file>C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content\scripts\game\player\r4Player.ws</file>
+            </Directory>
+          </Directory>
+          <Directory Path="C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content\scripts\local">
+            <file>C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content\scripts\local\jl102worldshadow.ws</file>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+    <Directory Path="C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\dlc\dlcjl102envs">
+      <Directory Path="C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\dlc\dlcjl102envs\content">
+        <file>C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\dlc\dlcjl102envs\content\blob0.bundle</file>
+        <file>C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\dlc\dlcjl102envs\content\metadata.store</file>
+      </Directory>
+    </Directory>
+  </Files>
+</InstalLog>
