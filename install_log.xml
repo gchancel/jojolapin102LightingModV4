@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<InstalLog Project="jojolapin102LightingModV4" Build_date="20/05/2023 18:04:49">
+<InstalLog Project="jojolapin102LightingModV4" Build_date="21/05/2023 17:56:45">
   <Files>
     <Directory Path="C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4">
       <Directory Path="C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content">
@@ -17,6 +17,7 @@
             </Directory>
           </Directory>
           <Directory Path="C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content\scripts\local">
+            <file>C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content\scripts\local\jl102vars.ws</file>
             <file>C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content\scripts\local\jl102worldshadow.ws</file>
           </Directory>
         </Directory>
@@ -25,6 +26,8 @@
     <Directory Path="C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\dlc\dlcjl102envs">
       <Directory Path="C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\dlc\dlcjl102envs\content">
         <file>C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\dlc\dlcjl102envs\content\blob0.bundle</file>
+        <file>C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\dlc\dlcjl102envs\content\en.w3strings</file>
+        <file>C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\dlc\dlcjl102envs\content\fr.w3strings</file>
         <file>C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\dlc\dlcjl102envs\content\metadata.store</file>
       </Directory>
     </Directory>

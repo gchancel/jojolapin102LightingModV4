@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<UserConfig>
+    <Group id="jl102Config" displayName="Mods.jl102Config">
+    	<PresetsArray>
+    		<Preset id="0" displayName="jl102_default">
+    			<Entry varId="envIntEnable"			value="true"/>
+    			<Entry varId="shadowFilterSize"		value="0"/>
+    		</Preset>
+    	</PresetsArray>
+    	<VisibleVars>
+    		<Var id="envIntEnable"		displayName="jl102_envIntEn"		displayType="TOGGLE"/>
+			<Var id="shadowFilterSize"	displayName="jl102_shadow_filter"	displayType="OPTIONS">
+				<OptionsArray>
+					<Option id="0" displayName="jl102_smooth">
+						<Entry varId="shadowFilterSize" value="0"/>
+					</Option>
+					<Option id="1" displayName="jl102_medium">
+						<Entry varId="shadowFilterSize" value="1"/>
+					</Option>
+					<Option id="2" displayName="jl102_sharp">
+						<Entry varId="shadowFilterSize" value="2"/>
+					</Option>
+				</OptionsArray>
+			</Var>
+		</VisibleVars>
+	</Group>
+</UserConfig>

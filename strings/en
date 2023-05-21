@@ -1,0 +1,11 @@
+;meta[language=en]
+; id      |key(hex)|key(str)| text
+2116006000||panel_Mods|Mods
+2116006001||panel_jl102Config|JL102LM
+2116006002||preset_value_jl102_default|Recommended
+2116006003||option_jl102_envIntEn|Custom Interior Environment
+2116006004||option_jl102_shadow_filter|Global Shadow Map Filter Size
+2116006005||preset_value_jl102_smooth|Smooth
+2116006006||preset_value_jl102_medium|Medium
+2116006007||preset_value_jl102_sharp|Sharp
+2116006008||preset_Mods_jl102Config|Jojolapin102's Lighting Mod
