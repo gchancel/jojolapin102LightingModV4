@@ -5,6 +5,11 @@ Wolven kit - 7.2.0.0
 20/05/2023 - Update v4
 */
 
+exec function checkEnvInteriorSetting()
+{
+	GetWitcherPlayer().DisplayHudMessage(theGame.GetInGameConfigWrapper().GetVarValue('jl102Config', 'envIntEnable'));
+}
+
 class CJL102LightingMod extends CEntityMod
 {
 	default modName = 'CJL102LightingMod';
@@ -13,93 +18,99 @@ class CJL102LightingMod extends CEntityMod
     default modVersion = '4.0';
     default logLevel = MLOG_DEBUG;
 
-	private var envJL102Corrections : CEnvironmentDefinition;
-	private var envJL102Cid : int; default envJL102Cid = -1;
-	private var envJL102idSSR : int; default envJL102idSSR = -1;
-	private var colorSceneMul : SSimpleCurve;
-	private var colorSkyMul : SSimpleCurve;
-	private var colorSkyAdd : SSimpleCurve;
-	private var envJL102SSR : CEnvironmentDefinition;
-	private var envCutDefGlo : CEnvironmentDefinition;
-	private var jl102LM_world : CWorld;
-	private var filterSize : string;
-	private var jl102WorldName : string;
-	private var blendInTime : float;
-	private var envInteriorEnable : int;
-	private var jliter : int;
-	private var jlSize : int;
-	private var jl102Debug : bool; default jl102Debug = true;
-	private var jl102Region : string;
-	private var ssaoState : string;
-	private var gameConfigWrapper : CInGameConfigWrapper;
+	var envJL102CorrectionsSSAO : CEnvironmentDefinition;
+	var envJL102CorrectionsHBAO : CEnvironmentDefinition;
+	var envJL102Cid : int; default envJL102Cid = -1;
+	var envJL102idSSR : int; default envJL102idSSR = -1;
+	var colorSceneMul : SSimpleCurve;
+	var colorSkyMul : SSimpleCurve;
+	var colorSkyAdd : SSimpleCurve;
+	var envJL102SSR : CEnvironmentDefinition;
+	var envCutDefGlo : CEnvironmentDefinition;
+	var jl102LM_world : CWorld;
+	var filterSize : string;
+	var jl102WorldName : string;
+	var blendInTime : float;
+	// var envInteriorEnable : string;
+	var jliter : int;
+	var jlSize : int;
+	var jl102Debug : bool; default jl102Debug = true;
+	var jl102Region : string;
+	var ssaoState : string;
+	var gameConfigWrapper : CInGameConfigWrapper;
 
 
-	public function initJL102LM()
+	function initJL102LM()
 	{
-		envInteriorEnable = StringToInt(gameConfigWrapper.GetVarValue('jl102Config', 'envIntEnable'));
+		// envInteriorEnable = gameConfigWrapper.GetVarValue('jl102Config', 'envIntEnable');
 		envJL102SSR = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_interior_generic.env", true);
+		gameConfigWrapper = theGame.GetInGameConfigWrapper();
+		jl102LM_world = theGame.GetWorld();
 		blendInTime = 1.0f;
 		jl102Region = "Région : Générique";
 	}
 
-	public function updateSsaoEnvDef()
+	function updateSsaoEnvDef()
 	{
-		if (ssaoState != gameConfigWrapper.GetVarValue('Graphics', 'SSAOEnabled'))
-		{
-			ssaoState = gameConfigWrapper.GetVarValue('Graphics', 'SSAOEnabled');
-
-			if (ssaoState == "1" || ssaoState == "0")
-			{
-				envJL102Corrections = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_global_ssao.env", true);
-			}
-			else if (ssaoState == "2")
-			{
-				envJL102Corrections = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_global_hbao.env", true);
-			}
-
-			DeactivateEnvironment(envJL102Cid, 0.0f);
-			envJL102Cid = ActivateEnvironmentDefinition(envJL102Corrections, 900, 1.0f, 1.0f);
-		}
-	}
-
-	public function updateJL102Settings()
-	{
-		if (envInteriorEnable != StringToInt(gameConfigWrapper.GetVarValue('jl102Config', 'envIntEnable')))
-		{
-			envInteriorEnable = StringToInt(gameConfigWrapper.GetVarValue('jl102Config', 'envIntEnable'));
-		}
-		if (filterSize != gameConfigWrapper.GetVarValue('jl102Config', 'shadowFilterSize'))
-		{
-			filterSize = gameConfigWrapper.GetVarValue('jl102Config', 'shadowFilterSize');
-			custom_world_shadow();
-		}
-	}
-
-	public function custom_world_shadow()
-	{
-		// Load and enable the global environment containing corrections.
 		ssaoState = gameConfigWrapper.GetVarValue('Graphics', 'SSAOEnabled');
-		filterSize = gameConfigWrapper.GetVarValue('jl102Config', 'shadowFilterSize');
+
 		if (ssaoState == "1" || ssaoState == "0")
 		{
-			envJL102Corrections = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_global_ssao.env", true);
+			DeactivateEnvironment(envJL102Cid, 0.0f);
+			envJL102Cid = ActivateEnvironmentDefinition(envJL102CorrectionsSSAO, 900, 1.0f, 1.0f);
+			// if (jl102Debug) GetWitcherPlayer().DisplayHudMessage("SSAO CORRECTIONS");
 		}
 		else if (ssaoState == "2")
 		{
-			envJL102Corrections = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_global_hbao.env", true);
+			DeactivateEnvironment(envJL102Cid, 0.0f);
+			envJL102Cid = ActivateEnvironmentDefinition(envJL102CorrectionsHBAO, 900, 1.0f, 1.0f);
+			// if (jl102Debug) GetWitcherPlayer().DisplayHudMessage("HBAO CORRECTIONS");
 		}
+	}
 
-		if (envJL102Cid == -1)
+	function updateJL102Settings()
+	{
+		var localFilterSize : string;
+		// envInteriorEnable = gameConfigWrapper.GetVarValue('jl102Config', 'envIntEnable');
+		localFilterSize = gameConfigWrapper.GetVarValue('jl102Config', 'shadowFilterSize');
+		if (filterSize != localFilterSize)
 		{
-			envJL102Cid = ActivateEnvironmentDefinition(envJL102Corrections, 900, 1.0f, 1.0f);
+			filterSize = localFilterSize;
+			// if (jl102Debug) GetWitcherPlayer().DisplayHudMessage("NEW FILTER SIZE");
+			worldShadowFilter();
 		}
-		else if (envJL102Cid > -1)
+	}
+
+	function globalEnvCorrections()
+	{
+		// Load and enable the global environment containing corrections.
+		ssaoState = gameConfigWrapper.GetVarValue('Graphics', 'SSAOEnabled');
+		envJL102CorrectionsSSAO = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_global_ssao.env", true);
+		envJL102CorrectionsHBAO = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_global_hbao.env", true);
+
+		if (ssaoState == "1" || ssaoState == "0" && envJL102Cid == -1)
+		{
+			envJL102Cid = ActivateEnvironmentDefinition(envJL102CorrectionsSSAO, 900, 1.0f, 1.0f);
+		}
+		else if (ssaoState == "1" || ssaoState == "0" && envJL102Cid > -1)
 		{
 			DeactivateEnvironment(envJL102Cid, 0.0f);
-			envJL102Cid = ActivateEnvironmentDefinition(envJL102Corrections, 900, 1.0f, 1.0f);
+			envJL102Cid = ActivateEnvironmentDefinition(envJL102CorrectionsSSAO, 900, 1.0f, 1.0f);
 		}
 
-		jl102LM_world = theGame.GetWorld();
+		else if (ssaoState == "2" && envJL102Cid == -1)
+		{
+			envJL102Cid = ActivateEnvironmentDefinition(envJL102CorrectionsHBAO, 900, 1.0f, 1.0f);
+		}
+		else if (ssaoState == "2" && envJL102Cid > -1)
+		{
+			DeactivateEnvironment(envJL102Cid, 0.0f);
+			envJL102Cid = ActivateEnvironmentDefinition(envJL102CorrectionsHBAO, 900, 1.0f, 1.0f);
+		}
+	}
+
+	function worldShadowRange()
+	{
 		// Overwrite the global world shadow configuration for better looking results. (best compromise)
 		jl102LM_world.shadowConfig.numCascades = 4;
 		jl102LM_world.shadowConfig.cascadeRange1 = 7;
@@ -107,7 +118,11 @@ class CJL102LightingMod extends CEntityMod
 		jl102LM_world.shadowConfig.cascadeRange3 = 110;
 		jl102LM_world.shadowConfig.cascadeRange4 = 210;
 		jl102LM_world.shadowConfig.terrainShadowsDistance = 5000;
-		
+	}
+
+	function worldShadowFilter()
+	{
+		filterSize = gameConfigWrapper.GetVarValue('jl102Config', 'shadowFilterSize');
 		if (filterSize == "0")
 		{
 			// SMOOTH -> CascadeShadowMapsize = 4096 for optimal results
@@ -136,9 +151,9 @@ class CJL102LightingMod extends CEntityMod
 		}
 	}
 	
-	public function playerInteriorState(inInterior : bool)
+	function playerInteriorState(inInterior : bool)
 	{
-		if (envInteriorEnable == 1)
+		if (gameConfigWrapper.GetVarValue('jl102Config', 'envIntEnable'))
 		{
 			if (inInterior)
 			{
@@ -166,7 +181,7 @@ class CJL102LightingMod extends CEntityMod
 		}
 	}
 	
-	public function displayModEnabledJL102()
+	function displayModEnabledJL102()
 	{
 		GetWitcherPlayer().DisplayHudMessage("Jojolapin102 lighting mod enabled.");
 	}
