@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<InstalLog Project="jojolapin102LightingModV4" Build_date="21/05/2023 17:56:45">
+<InstalLog Project="jojolapin102LightingModV4" Build_date="21/05/2023 19:20:25">
   <Files>
     <Directory Path="C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4">
       <Directory Path="C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content">
@@ -17,7 +17,6 @@
             </Directory>
           </Directory>
           <Directory Path="C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content\scripts\local">
-            <file>C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content\scripts\local\jl102vars.ws</file>
             <file>C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\Mods\modjojolapin102LightingModV4\content\scripts\local\jl102worldshadow.ws</file>
           </Directory>
         </Directory>

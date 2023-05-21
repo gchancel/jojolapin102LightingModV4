@@ -25,25 +25,24 @@ class CJL102LightingMod extends CEntityMod
 	private var filterSize : string;
 	private var jl102WorldName : string;
 	private var blendInTime : float;
-	private var envInteriorEnable : bool;
+	private var envInteriorEnable : int;
 	private var jliter : int;
 	private var jlSize : int;
 	private var jl102Debug : bool; default jl102Debug = true;
 	private var jl102Region : string;
 	private var ssaoState : string;
-	private var filterSize : string;
 	private var gameConfigWrapper : CInGameConfigWrapper;
 
 
-	private function initJL102LM()
+	public function initJL102LM()
 	{
-		envInteriorEnable = gameConfigWrapper.GetVarValue('jl102Config', 'envIntEnable');
-		envJL102SSR = (CEnvironmentDefinition)LoadResourceAsync("dlc\dlcjl102envs\data\environment\definitions\env_jl102_interior_generic.env", true);
+		envInteriorEnable = StringToInt(gameConfigWrapper.GetVarValue('jl102Config', 'envIntEnable'));
+		envJL102SSR = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_interior_generic.env", true);
 		blendInTime = 1.0f;
 		jl102Region = "Région : Générique";
 	}
 
-	private function updateSsaoEnvDef()
+	public function updateSsaoEnvDef()
 	{
 		if (ssaoState != gameConfigWrapper.GetVarValue('Graphics', 'SSAOEnabled'))
 		{
@@ -51,11 +50,11 @@ class CJL102LightingMod extends CEntityMod
 
 			if (ssaoState == "1" || ssaoState == "0")
 			{
-				envJL102Corrections = (CEnvironmentDefinition)LoadResourceAsync("dlc\dlcjl102envs\data\environment\definitions\env_jl102_global_ssao.env", true);
+				envJL102Corrections = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_global_ssao.env", true);
 			}
 			else if (ssaoState == "2")
 			{
-				envJL102Corrections = (CEnvironmentDefinition)LoadResourceAsync("dlc\dlcjl102envs\data\environment\definitions\env_jl102_global_hbao.env", true);
+				envJL102Corrections = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_global_hbao.env", true);
 			}
 
 			DeactivateEnvironment(envJL102Cid, 0.0f);
@@ -63,11 +62,11 @@ class CJL102LightingMod extends CEntityMod
 		}
 	}
 
-	private function updateJL102Settings()
+	public function updateJL102Settings()
 	{
-		if (envInteriorEnable != gameConfigWrapper.GetVarValue('jl102Config', 'envIntEnable'))
+		if (envInteriorEnable != StringToInt(gameConfigWrapper.GetVarValue('jl102Config', 'envIntEnable')))
 		{
-			envInteriorEnable = gameConfigWrapper.GetVarValue('jl102Config', 'envIntEnable');
+			envInteriorEnable = StringToInt(gameConfigWrapper.GetVarValue('jl102Config', 'envIntEnable'));
 		}
 		if (filterSize != gameConfigWrapper.GetVarValue('jl102Config', 'shadowFilterSize'))
 		{
@@ -76,18 +75,18 @@ class CJL102LightingMod extends CEntityMod
 		}
 	}
 
-	private function custom_world_shadow()
+	public function custom_world_shadow()
 	{
 		// Load and enable the global environment containing corrections.
 		ssaoState = gameConfigWrapper.GetVarValue('Graphics', 'SSAOEnabled');
 		filterSize = gameConfigWrapper.GetVarValue('jl102Config', 'shadowFilterSize');
 		if (ssaoState == "1" || ssaoState == "0")
 		{
-			envJL102Corrections = (CEnvironmentDefinition)LoadResourceAsync("dlc\dlcjl102envs\data\environment\definitions\env_jl102_global_ssao.env", true);
+			envJL102Corrections = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_global_ssao.env", true);
 		}
 		else if (ssaoState == "2")
 		{
-			envJL102Corrections = (CEnvironmentDefinition)LoadResourceAsync("dlc\dlcjl102envs\data\environment\definitions\env_jl102_global_hbao.env", true);
+			envJL102Corrections = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_global_hbao.env", true);
 		}
 
 		if (envJL102Cid == -1)
@@ -137,9 +136,9 @@ class CJL102LightingMod extends CEntityMod
 		}
 	}
 	
-	function playerInteriorState(inInterior : bool)
+	public function playerInteriorState(inInterior : bool)
 	{
-		if (envInteriorEnable)
+		if (envInteriorEnable == 1)
 		{
 			if (inInterior)
 			{
@@ -167,7 +166,7 @@ class CJL102LightingMod extends CEntityMod
 		}
 	}
 	
-	function displayModEnabledJL102()
+	public function displayModEnabledJL102()
 	{
 		GetWitcherPlayer().DisplayHudMessage("Jojolapin102 lighting mod enabled.");
 	}
