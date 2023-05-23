@@ -5,12 +5,14 @@
     		<Preset id="0" displayName="jl102_defaultSSAO">	
     			<Entry varId="envIntEnable"			value="true"/>
     			<Entry varId="shadowFilterSize"		value="0"/>
-				<Entry varId="AOInteriorMultiplier"	value="1.15"/>
+				<Entry overrideGroup="PostProcess" varId="AOInteriorMultiplier"	value="1.34"/>
+				<Entry overrideGroup="PostProcess" varId="SSAOEnabled" value="1"/>
     		</Preset>
     		<Preset id="1" displayName="jl102_defaultHBAO">
     			<Entry varId="envIntEnable"			value="true"/>
     			<Entry varId="shadowFilterSize"		value="0"/>
-				<Entry varId="AOInteriorMultiplier"	value="0.86"/>
+				<Entry overrideGroup="PostProcess" varId="AOInteriorMultiplier"	value="0.96"/>
+				<Entry overrideGroup="PostProcess" varId="SSAOEnabled" value="2"/>
     		</Preset>
     	</PresetsArray>
     	<VisibleVars>
@@ -29,6 +31,21 @@
 				</OptionsArray>
 			</Var>
 			<Var overrideGroup="PostProcess" id="AOInteriorMultiplier" displayName="jl102_ssaoIntMul" displayType="SLIDER;0;2;21" tags="refreshEngine"/>
+
+			<!-- Screen Space Ambient Occlusion -->
+			<Var overrideGroup="PostProcess" id="SSAOEnabled" displayName="option_ssao" displayType="OPTIONS" tags="customDisplayName;customNames;disableIfRTAO;nonLocalizedExceptFirst">
+				<OptionsArray>
+					<Option id="0" displayName="panel_mainmenu_option_value_off">
+						<Entry overrideGroup="PostProcess" varId="SSAOEnabled" value="0"/>
+					</Option>
+					<Option id="1" displayName="SSAO">
+						<Entry overrideGroup="PostProcess" varId="SSAOEnabled" value="1"/>
+					</Option>
+					<Option id="2" displayName="HBAO+">
+						<Entry overrideGroup="PostProcess" varId="SSAOEnabled" value="2"/>
+					</Option>
+				</OptionsArray>
+			</Var>
 		</VisibleVars>
 	</Group>
 </UserConfig>
