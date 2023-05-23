@@ -16,7 +16,9 @@
     		</Preset>
     	</PresetsArray>
     	<VisibleVars>
+			<!-- Custom interior .env Enable -->
     		<Var id="envIntEnable"		displayName="jl102_envIntEn"		displayType="TOGGLE"/>
+			<!-- ShadowMap Filter Sharpness -->
 			<Var id="shadowFilterSize"	displayName="jl102_shadow_filter"	displayType="OPTIONS">
 				<OptionsArray>
 					<Option id="0" displayName="jl102_smooth">
@@ -30,8 +32,11 @@
 					</Option>
 				</OptionsArray>
 			</Var>
-			<Var overrideGroup="PostProcess" id="AOInteriorMultiplier" displayName="jl102_ssaoIntMul" displayType="SLIDER;0;2;21" tags="refreshEngine"/>
 
+			<Var id="Separator" displayName="" displayType="SUBTLE_SEPARATOR"/>
+
+			<!-- Interior Screen Space Ambient Occlusion Multiplier -->
+			<Var overrideGroup="PostProcess" id="AOInteriorMultiplier" displayName="jl102_ssaoIntMul" displayType="SLIDER;0;2;21" tags="refreshEngine"/>
 			<!-- Screen Space Ambient Occlusion -->
 			<Var overrideGroup="PostProcess" id="SSAOEnabled" displayName="option_ssao" displayType="OPTIONS" tags="customDisplayName;customNames;disableIfRTAO;nonLocalizedExceptFirst">
 				<OptionsArray>
