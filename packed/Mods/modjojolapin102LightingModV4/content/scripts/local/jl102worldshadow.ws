@@ -10,6 +10,64 @@ exec function checkEnvInteriorSetting()
 	GetWitcherPlayer().DisplayHudMessage(theGame.GetInGameConfigWrapper().GetVarValue('jl102Config', 'envIntEnable'));
 }
 
+// exec function jl102EnvsDebug()
+// {
+// 	var i : int;
+// 	var envList : array< string >;
+
+// 	GetActiveAreaEnvironmentDefinitions(envList);
+// 	for (i = 0; i < envList.Size(); i += 1)
+// 	{
+
+// 	}
+// }
+
+exec function jl102_disable_envs()
+{
+    var null: CEnvironmentDefinition;
+    var i : int;
+
+    for (i = 0; i < 50000; i += 1)
+	{
+        DeactivateEnvironment(i, 0.0);
+    }
+}
+
+exec function enableEnv(regionName : string)
+{
+    var null: CEnvironmentDefinition;
+    var i : int;
+
+    for (i = 0; i < 50000; i += 1)
+	{
+        DeactivateEnvironment(i, 0.0);
+    }
+
+	// Novigrad City
+	if (regionName == "novigrad")
+	{
+		ActivateEnvironmentDefinition((CEnvironmentDefinition)LoadResource("environment\definitions\env_novigrad\env_novigrad_sunset.env", true), 0, 1.0, 0.0);
+		ActivateEnvironmentDefinition((CEnvironmentDefinition)LoadResource("environment\definitions\env_novigrad\env_novigrad_global\env_novigrad_city.env", true), 1, 1.0, 0.0);
+	}
+	else if (regionName == "novigradInterior")
+	{
+		ActivateEnvironmentDefinition((CEnvironmentDefinition)LoadResource("environment\definitions\env_novigrad\env_novigrad_sunset.env", true), 0, 1.0, 0.0);
+		ActivateEnvironmentDefinition((CEnvironmentDefinition)LoadResource("environment\definitions\env_novigrad\env_novigrad_global\env_novigrad_city.env", true), 1, 1.0, 0.0);
+		ActivateEnvironmentDefinition((CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_interior_generic.env", true), 2, 1.0, 0.0);
+	}
+
+	// Velen No Swamp
+	else if (regionName == "velen")
+	{
+		ActivateEnvironmentDefinition((CEnvironmentDefinition)LoadResource("environment\definitions\env_novigrad\env_novigrad_sunset.env", true), 0, 1.0, 0.0);
+	}
+	else if (regionName == "velenInterior")
+	{
+		ActivateEnvironmentDefinition((CEnvironmentDefinition)LoadResource("environment\definitions\env_novigrad\env_novigrad_sunset.env", true), 0, 1.0, 0.0);
+		ActivateEnvironmentDefinition((CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_interior_generic.env", true), 1, 1.0, 0.0);
+	}
+}
+
 class CJL102LightingMod extends CEntityMod
 {
 	default modName = 'CJL102LightingMod';
