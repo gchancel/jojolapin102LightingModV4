@@ -2,9 +2,15 @@
 <UserConfig>
     <Group id="jl102Config" displayName="Mods.jl102Config">
     	<PresetsArray>
-    		<Preset id="0" displayName="jl102_default">
+    		<Preset id="0" displayName="jl102_defaultSSAO">	
     			<Entry varId="envIntEnable"			value="true"/>
     			<Entry varId="shadowFilterSize"		value="0"/>
+				<Entry varId="AOInteriorMultiplier"	value="1.15"/>
+    		</Preset>
+    		<Preset id="1" displayName="jl102_defaultHBAO">
+    			<Entry varId="envIntEnable"			value="true"/>
+    			<Entry varId="shadowFilterSize"		value="0"/>
+				<Entry varId="AOInteriorMultiplier"	value="0.86"/>
     		</Preset>
     	</PresetsArray>
     	<VisibleVars>
@@ -22,6 +28,7 @@
 					</Option>
 				</OptionsArray>
 			</Var>
+			<Var overrideGroup="PostProcess" id="AOInteriorMultiplier" displayName="jl102_ssaoIntMul" displayType="SLIDER;0;2;21" tags="refreshEngine"/>
 		</VisibleVars>
 	</Group>
 </UserConfig>

@@ -2,10 +2,12 @@
 ; id      |key(hex)|key(str)| text
 2116006000||panel_Mods|Mods
 2116006001||panel_jl102Config|JL102LM
-2116006002||preset_value_jl102_default|Recommandé
+2116006002||preset_value_jl102_defaultSSAO|SSAO
+2116006010||preset_value_jl102_defaultHBAO|HBAO
 2116006003||option_jl102_envIntEn|Environmement intérieurs personnalisés
 2116006004||option_jl102_shadow_filter|Type de filtre du Shadow Mapping
 2116006005||preset_value_jl102_smooth|Flou
 2116006006||preset_value_jl102_medium|Intermédiaire
 2116006007||preset_value_jl102_sharp|Net
 2116006008||preset_Mods_jl102Config|Mod d'éclairage de Jojolapin102
+2116006009||option_jl102_ssaoIntMul|Multiplicateur SSAO : Intérieur

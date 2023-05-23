@@ -9,24 +9,28 @@ function _test_verifyW3strings() : int {
     // test by id
     if (!assertTrue(GetLocStringById(2116006000) == "Mods", "w3string.byId: 2116006000")) failed += 1;
     if (!assertTrue(GetLocStringById(2116006001) == "JL102LM", "w3string.byId: 2116006001")) failed += 1;
-    if (!assertTrue(GetLocStringById(2116006002) == "Recommended", "w3string.byId: 2116006002")) failed += 1;
+    if (!assertTrue(GetLocStringById(2116006002) == "SSAO", "w3string.byId: 2116006002")) failed += 1;
+    if (!assertTrue(GetLocStringById(2116006010) == "HBAO", "w3string.byId: 2116006010")) failed += 1;
     if (!assertTrue(GetLocStringById(2116006003) == "Custom Interior Environment", "w3string.byId: 2116006003")) failed += 1;
     if (!assertTrue(GetLocStringById(2116006004) == "Global Shadow Map Filter Size", "w3string.byId: 2116006004")) failed += 1;
     if (!assertTrue(GetLocStringById(2116006005) == "Smooth", "w3string.byId: 2116006005")) failed += 1;
     if (!assertTrue(GetLocStringById(2116006006) == "Medium", "w3string.byId: 2116006006")) failed += 1;
     if (!assertTrue(GetLocStringById(2116006007) == "Sharp", "w3string.byId: 2116006007")) failed += 1;
     if (!assertTrue(GetLocStringById(2116006008) == "Jojolapin102's Lighting Mod", "w3string.byId: 2116006008")) failed += 1;
+    if (!assertTrue(GetLocStringById(2116006009) == "SSAO Interior Multiplier", "w3string.byId: 2116006009")) failed += 1;
 
     // test by key
     if (!assertTrue(GetLocStringByKey("panel_Mods") == "Mods", "w3string.byKey: panel_Mods")) failed += 1;
     if (!assertTrue(GetLocStringByKey("panel_jl102Config") == "JL102LM", "w3string.byKey: panel_jl102Config")) failed += 1;
-    if (!assertTrue(GetLocStringByKey("preset_value_jl102_default") == "Recommended", "w3string.byKey: preset_value_jl102_default")) failed += 1;
+    if (!assertTrue(GetLocStringByKey("preset_value_jl102_defaultSSAO") == "SSAO", "w3string.byKey: preset_value_jl102_defaultSSAO")) failed += 1;
+    if (!assertTrue(GetLocStringByKey("preset_value_jl102_defaultHBAO") == "HBAO", "w3string.byKey: preset_value_jl102_defaultHBAO")) failed += 1;
     if (!assertTrue(GetLocStringByKey("option_jl102_envIntEn") == "Custom Interior Environment", "w3string.byKey: option_jl102_envIntEn")) failed += 1;
     if (!assertTrue(GetLocStringByKey("option_jl102_shadow_filter") == "Global Shadow Map Filter Size", "w3string.byKey: option_jl102_shadow_filter")) failed += 1;
     if (!assertTrue(GetLocStringByKey("preset_value_jl102_smooth") == "Smooth", "w3string.byKey: preset_value_jl102_smooth")) failed += 1;
     if (!assertTrue(GetLocStringByKey("preset_value_jl102_medium") == "Medium", "w3string.byKey: preset_value_jl102_medium")) failed += 1;
     if (!assertTrue(GetLocStringByKey("preset_value_jl102_sharp") == "Sharp", "w3string.byKey: preset_value_jl102_sharp")) failed += 1;
     if (!assertTrue(GetLocStringByKey("preset_Mods_jl102Config") == "Jojolapin102's Lighting Mod", "w3string.byKey: preset_Mods_jl102Config")) failed += 1;
+    if (!assertTrue(GetLocStringByKey("option_jl102_ssaoIntMul") == "SSAO Interior Multiplier", "w3string.byKey: option_jl102_ssaoIntMul")) failed += 1;
 
     // return number of failed
     return failed;
