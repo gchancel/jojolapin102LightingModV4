@@ -2,22 +2,76 @@
 <UserConfig>
     <Group id="jl102Config" displayName="Mods.jl102Config">
     	<PresetsArray>
-    		<Preset id="0" displayName="jl102_defaultSSAO">	
-    			<Entry varId="envIntEnable"			value="true"/>
-    			<Entry varId="shadowFilterSize"		value="0"/>
-				<Entry overrideGroup="PostProcess" varId="AOInteriorMultiplier"	value="1.05"/>
-				<Entry overrideGroup="PostProcess" varId="SSAOEnabled" value="1"/>
+    		<Preset id="0" displayName="jl102_default">
+    			<Entry 								varId="envIntEnable"				value="true"/>
+    			<Entry 								varId="shadowFilterSize"			value="0"/>
+				<Entry overrideGroup="PostProcess" 	varId="AOInteriorMultiplier"		value="1.05"/>
+				<Entry overrideGroup="PostProcess" 	varId="SSAOEnabled" 				value="1"/>
+				<Entry overrideGroup="Rendering" 	varId="CascadeShadowmapSize" 		value="6144"/>
+				<Entry overrideGroup="Rendering" 	varId="DisableAllCameraLights" 		value="false"/>
+				<Entry overrideGroup="Rendering" 	varId="DisableBigCameraLights" 		value="false"/>
+				<Entry overrideGroup="Rendering" 	varId="DisableSmallCameraLights" 	value="false"/>
     		</Preset>
-    		<Preset id="1" displayName="jl102_defaultHBAO">
-    			<Entry varId="envIntEnable"			value="true"/>
-    			<Entry varId="shadowFilterSize"		value="0"/>
-				<Entry overrideGroup="PostProcess" varId="AOInteriorMultiplier"	value="0.96"/>
-				<Entry overrideGroup="PostProcess" varId="SSAOEnabled" value="2"/>
+    		<Preset id="1" displayName="jl102_defaultSSAO">	
+    			<Entry 								varId="envIntEnable"				value="true"/>
+				<Entry overrideGroup="PostProcess" 	varId="AOInteriorMultiplier"		value="1.05"/>
+				<Entry overrideGroup="PostProcess" 	varId="SSAOEnabled" 				value="1"/>
+				<Entry overrideGroup="Rendering" 	varId="DisableAllCameraLights" 		value="false"/>
+				<Entry overrideGroup="Rendering" 	varId="DisableBigCameraLights" 		value="false"/>
+				<Entry overrideGroup="Rendering" 	varId="DisableSmallCameraLights" 	value="false"/>
+    		</Preset>
+    		<Preset id="2" displayName="jl102_defaultHBAO">
+    			<Entry 								varId="envIntEnable"				value="true"/>
+				<Entry overrideGroup="PostProcess" 	varId="AOInteriorMultiplier"		value="0.96"/>
+				<Entry overrideGroup="PostProcess" 	varId="SSAOEnabled" 				value="2"/>
+				<Entry overrideGroup="Rendering" 	varId="DisableAllCameraLights" 		value="false"/>
+				<Entry overrideGroup="Rendering" 	varId="DisableBigCameraLights" 		value="false"/>
+				<Entry overrideGroup="Rendering" 	varId="DisableSmallCameraLights" 	value="false"/>
+    		</Preset>
+    		<Preset id="3" displayName="jl102_smooth_default">
+    			<Entry 								varId="shadowFilterSize"			value="0"/>
+				<Entry overrideGroup="Rendering" 	varId="CascadeShadowmapSize" 		value="6144"/>
+				<Entry overrideGroup="Rendering" 	varId="DisableAllCameraLights" 		value="false"/>
+				<Entry overrideGroup="Rendering" 	varId="DisableBigCameraLights" 		value="false"/>
+				<Entry overrideGroup="Rendering" 	varId="DisableSmallCameraLights" 	value="false"/>
+    		</Preset>
+    		<Preset id="4" displayName="jl102_medium_default">
+    			<Entry 								varId="shadowFilterSize"			value="1"/>
+				<Entry overrideGroup="Rendering" 	varId="CascadeShadowmapSize" 		value="7680"/>
+				<Entry overrideGroup="Rendering" 	varId="DisableAllCameraLights" 		value="false"/>
+				<Entry overrideGroup="Rendering" 	varId="DisableBigCameraLights" 		value="false"/>
+				<Entry overrideGroup="Rendering" 	varId="DisableSmallCameraLights" 	value="false"/>
+    		</Preset>
+    		<Preset id="5" displayName="jl102_sharp_default">
+    			<Entry 								varId="shadowFilterSize"			value="2"/>
+				<Entry overrideGroup="Rendering" 	varId="CascadeShadowmapSize" 		value="8192"/>
+				<Entry overrideGroup="Rendering" 	varId="DisableAllCameraLights" 		value="false"/>
+				<Entry overrideGroup="Rendering" 	varId="DisableBigCameraLights" 		value="false"/>
+				<Entry overrideGroup="Rendering" 	varId="DisableSmallCameraLights" 	value="false"/>
     		</Preset>
     	</PresetsArray>
     	<VisibleVars>
 			<!-- Custom interior .env Enable -->
     		<Var id="envIntEnable"		displayName="jl102_envIntEn"		displayType="TOGGLE"/>
+			<!-- Interior Screen Space Ambient Occlusion Multiplier -->
+			<Var overrideGroup="PostProcess" id="AOInteriorMultiplier" displayName="jl102_ssaoIntMul" displayType="SLIDER;0;2;21" tags="refreshEngine"/>
+			<!-- Screen Space Ambient Occlusion -->
+			<Var overrideGroup="PostProcess" id="SSAOEnabled" displayName="option_ssao" displayType="OPTIONS" tags="customDisplayName;customNames;disableIfRTAO;nonLocalizedExceptFirst">
+				<OptionsArray>
+					<Option id="0" displayName="panel_mainmenu_option_value_off">
+						<Entry overrideGroup="PostProcess" varId="SSAOEnabled" value="0"/>
+					</Option>
+					<Option id="1" displayName="SSAO">
+						<Entry overrideGroup="PostProcess" varId="SSAOEnabled" value="1"/>
+					</Option>
+					<Option id="2" displayName="HBAO+">
+						<Entry overrideGroup="PostProcess" varId="SSAOEnabled" value="2"/>
+					</Option>
+				</OptionsArray>
+			</Var>
+
+			<Var id="Separator" displayName="" displayType="SUBTLE_SEPARATOR"/>
+
 			<!-- ShadowMap Filter Sharpness -->
 			<Var id="shadowFilterSize"	displayName="jl102_shadow_filter"	displayType="OPTIONS">
 				<OptionsArray>
@@ -32,22 +86,29 @@
 					</Option>
 				</OptionsArray>
 			</Var>
-
-			<Var id="Separator" displayName="" displayType="SUBTLE_SEPARATOR"/>
-
-			<!-- Interior Screen Space Ambient Occlusion Multiplier -->
-			<Var overrideGroup="PostProcess" id="AOInteriorMultiplier" displayName="jl102_ssaoIntMul" displayType="SLIDER;0;2;21" tags="refreshEngine"/>
-			<!-- Screen Space Ambient Occlusion -->
-			<Var overrideGroup="PostProcess" id="SSAOEnabled" displayName="option_ssao" displayType="OPTIONS" tags="customDisplayName;customNames;disableIfRTAO;nonLocalizedExceptFirst">
+			<!-- ShadowMap R3esolution -->
+			<Var id="Virtual_CascadeShadowmapSize" displayName="cascade_shadowmap_size" displayType="OPTIONS" tags="refreshEngineWithTexturesReload;customPresetIfChanged">
 				<OptionsArray>
-					<Option id="0" displayName="panel_mainmenu_option_value_off">
-						<Entry overrideGroup="PostProcess" varId="SSAOEnabled" value="0"/>
+					<Option id="0" displayName="2048">
+						<Entry overrideGroup="Rendering" varId="CascadeShadowmapSize"	value="2048"/>
 					</Option>
-					<Option id="1" displayName="SSAO">
-						<Entry overrideGroup="PostProcess" varId="SSAOEnabled" value="1"/>
+					<Option id="1" displayName="3072">
+						<Entry overrideGroup="Rendering" varId="CascadeShadowmapSize"	value="3072"/>
 					</Option>
-					<Option id="2" displayName="HBAO+">
-						<Entry overrideGroup="PostProcess" varId="SSAOEnabled" value="2"/>
+					<Option id="2" displayName="4096">
+						<Entry overrideGroup="Rendering" varId="CascadeShadowmapSize"	value="4096"/>
+					</Option>
+					<Option id="3" displayName="5120">
+						<Entry overrideGroup="Rendering" varId="CascadeShadowmapSize"	value="5120"/>
+					</Option>
+					<Option id="4" displayName="6144">
+						<Entry overrideGroup="Rendering" varId="CascadeShadowmapSize"	value="6144"/>
+					</Option>
+					<Option id="5" displayName="7680">
+						<Entry overrideGroup="Rendering" varId="CascadeShadowmapSize"	value="7680"/>
+					</Option>
+					<Option id="6" displayName="8192">
+						<Entry overrideGroup="Rendering" varId="CascadeShadowmapSize"	value="8192"/>
 					</Option>
 				</OptionsArray>
 			</Var>
