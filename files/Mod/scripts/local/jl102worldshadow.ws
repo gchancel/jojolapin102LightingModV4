@@ -10,6 +10,52 @@ exec function checkEnvInteriorSetting()
 	GetWitcherPlayer().DisplayHudMessage(theGame.GetInGameConfigWrapper().GetVarValue('jl102Config', 'envIntEnable'));
 }
 
+exec function jl102_disable_envs()
+{
+    var null: CEnvironmentDefinition;
+    var i : int;
+
+    for (i = 0; i < 50000; i += 1)
+	{
+        DeactivateEnvironment(i, 0.0);
+    }
+}
+
+// testInt('ambColorAmbient', 1.0)
+// testInt('ambColorAdd', 1.0)
+// testInt('ambSkyTop', 1.0)
+// testInt('ambSkyHoriz', 1.0)
+
+exec function testInt(param : string, val : float)
+{
+	var envJL102SSR : CEnvironmentDefinition;
+    var null: CEnvironmentDefinition;
+    var i : int;
+
+    for (i = 0; i < 50000; i += 1)
+	{
+        DeactivateEnvironment(i, 0.0);
+    }
+	envJL102SSR = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_interior_generic.env", true);
+	if (param == "ambColorAmbient")
+	{
+		envJL102SSR.envParams.m_globalLight.envProbeBaseLightingAmbient.colorAmbient.dataCurveValues[0].ntrolPoint.W = val;
+	}
+	else if (param == "ambColorAdd")
+	{
+		envJL102SSR.envParams.m_globalLight.envProbeBaseLightingAmbient.colorSceneAdd.dataCurveValues[0].ntrolPoint.W = val;
+	}
+	else if (param == "ambSkyTop")
+	{
+		envJL102SSR.envParams.m_globalLight.envProbeBaseLightingAmbient.colorSkyTop.dataCurveValues[0].ntrolPoint.W = val;
+	}
+	else if (param == "ambSkyHoriz")
+	{
+		envJL102SSR.envParams.m_globalLight.envProbeBaseLightingAmbient.colorSkyHorizon.dataCurveValues[0].ntrolPoint.W = val;
+	}
+	ActivateEnvironmentDefinition(envJL102SSR, 999, 1.0f, 0.0f);
+}
+
 // exec function jl102EnvsDebug()
 // {
 // 	var i : int;
@@ -21,17 +67,6 @@ exec function checkEnvInteriorSetting()
 
 // 	}
 // }
-
-exec function jl102_disable_envs()
-{
-    var null: CEnvironmentDefinition;
-    var i : int;
-
-    for (i = 0; i < 50000; i += 1)
-	{
-        DeactivateEnvironment(i, 0.0);
-    }
-}
 
 exec function enableEnv(regionName : string)
 {
@@ -101,9 +136,10 @@ class CJL102LightingMod extends CEntityMod
 	function initJL102LM()
 	{
 		// envInteriorEnable = gameConfigWrapper.GetVarValue('jl102Config', 'envIntEnable');
-		envJL102SSR = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_interior_generic.env", true);
 		gameConfigWrapper = theGame.GetInGameConfigWrapper();
 		jl102LM_world = theGame.GetWorld();
+		jl102WorldName = jl102LM_world.GetDepotPath();
+		envJL102SSR = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_interior_generic.env", true);
 		blendInTime = 1.0f;
 		jl102Region = "Région : Générique";
 	}
