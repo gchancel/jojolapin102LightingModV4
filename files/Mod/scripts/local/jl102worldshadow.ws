@@ -26,6 +26,13 @@ exec function jl102_disable_envs()
 // testInt('ambSkyTop', 1.0)
 // testInt('ambSkyHoriz', 1.0)
 
+// testInt('reflSceneMul', 1.0)
+// testInt('reflSkyMul', 1.0)
+// testInt('reflSkyAdd', 1.0)
+
+// testInt('ambScale', 1.0)
+// testInt('reflScale', 1.0)
+
 exec function testInt(param : string, val : float)
 {
 	var envJL102SSR : CEnvironmentDefinition;
@@ -52,6 +59,26 @@ exec function testInt(param : string, val : float)
 	else if (param == "ambSkyHoriz")
 	{
 		envJL102SSR.envParams.m_globalLight.envProbeBaseLightingAmbient.colorSkyHorizon.dataCurveValues[0].ntrolPoint.W = val;
+	}
+	else if (param == "reflSceneMul")
+	{
+		envJL102SSR.envParams.m_globalLight.envProbeBaseLightingReflection.colorSceneMul.dataCurveValues[0].ntrolPoint.W = val;
+	}
+	else if (param == "reflSkyMul")
+	{
+		envJL102SSR.envParams.m_globalLight.envProbeBaseLightingReflection.colorSkyMul.dataCurveValues[0].ntrolPoint.W = val;
+	}
+	else if (param == "reflSkyAdd")
+	{
+		envJL102SSR.envParams.m_globalLight.envProbeBaseLightingReflection.colorSkyAdd.dataCurveValues[0].ntrolPoint.W = val;
+	}
+	else if (param == "ambScale")
+	{
+		envJL102SSR.envParams.m_globalLight.envProbeAmbientScaleShadow.dataCurveValues[0].lue = val;
+	}
+	else if (param == "reflScale")
+	{
+		envJL102SSR.envParams.m_globalLight.envProbeReflectionScaleShadow.dataCurveValues[0].lue = val;
 	}
 	ActivateEnvironmentDefinition(envJL102SSR, 999, 1.0f, 0.0f);
 }
