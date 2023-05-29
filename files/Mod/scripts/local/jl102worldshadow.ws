@@ -158,6 +158,8 @@ class CJL102LightingMod extends CEntityMod
 	var jl102Region : string;
 	var ssaoState : string;
 	var gameConfigWrapper : CInGameConfigWrapper;
+	var cameraOrigin : float;
+	var cameraAttenuation : float;
 
 
 	function initJL102LM()
@@ -167,6 +169,8 @@ class CJL102LightingMod extends CEntityMod
 		jl102LM_world = theGame.GetWorld();
 		jl102WorldName = jl102LM_world.GetDepotPath();
 		envJL102SSR = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_interior_generic.env", true);
+		cameraOrigin = envJL102SSR.envParams.m_cameraLightsSetup.gameplayLight0.attenuation.ScalarEditOrigin;
+		cameraAttenuation = envJL102SSR.envParams.m_cameraLightsSetup.gameplayLight0.attenuation.dataCurveValues[0].lue;
 		blendInTime = 1.0f;
 		jl102Region = "Région : Générique";
 	}
@@ -274,6 +278,21 @@ class CJL102LightingMod extends CEntityMod
 	
 	function playerInteriorState(inInterior : bool)
 	{
+		var i : int;
+		var envList : array< string >;
+
+		GetActiveAreaEnvironmentDefinitions(envList);
+		if (envList.Contains("env_novigrad_city"))
+		{
+			envJL102SSR.envParams.m_cameraLightsSetup.gameplayLight0.attenuation.ScalarEditOrigin = 0.3;
+			envJL102SSR.envParams.m_cameraLightsSetup.gameplayLight0.attenuation.dataCurveValues[0].lue = 0.3;
+		}
+		else
+		{
+			envJL102SSR.envParams.m_cameraLightsSetup.gameplayLight0.attenuation.ScalarEditOrigin = cameraOrigin;
+			envJL102SSR.envParams.m_cameraLightsSetup.gameplayLight0.attenuation.dataCurveValues[0].lue = cameraAttenuation;
+		}
+
 		if (gameConfigWrapper.GetVarValue('jl102Config', 'envIntEnable'))
 		{
 			if (inInterior)
