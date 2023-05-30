@@ -168,7 +168,14 @@ class CJL102LightingMod extends CEntityMod
 		gameConfigWrapper = theGame.GetInGameConfigWrapper();
 		jl102LM_world = theGame.GetWorld();
 		jl102WorldName = jl102LM_world.GetDepotPath();
-		envJL102SSR = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_interior_generic.env", true);
+		if (StrContains(jl102WorldName , "bob"))
+		{
+			envJL102SSR = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_interior_bobFogOnly.env", true);
+		}
+		else
+		{
+			envJL102SSR = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_interior_generic.env", true);
+		}
 		cameraOrigin = envJL102SSR.envParams.m_cameraLightsSetup.gameplayLight0.attenuation.ScalarEditOrigin;
 		cameraAttenuation = envJL102SSR.envParams.m_cameraLightsSetup.gameplayLight0.attenuation.dataCurveValues[0].lue;
 		blendInTime = 1.0f;
