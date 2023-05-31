@@ -83,6 +83,20 @@ exec function testInt(param : string, val : float)
 	ActivateEnvironmentDefinition(envJL102SSR, 999, 1.0f, 0.0f);
 }
 
+exec function testKaerEnvInt()
+{
+	var i : int;
+	var envKaerInt : CEnvironmentDefinition;
+
+	for (i = 0; i < 50000; i += 1)
+	{
+        DeactivateEnvironment(i, 0.0);
+    }
+	envKaerInt = (CEnvironmentDefinition)LoadResource("environment\definitions\kaer_morhen\kaer_morhen_global\env_kaer_morhen_v09_hdr_int.env", true);
+	ActivateEnvironmentDefinition(envKaerInt, 999, 1.0f, 0.0f);
+
+}
+
 // exec function jl102EnvsDebug()
 // {
 // 	var i : int;
@@ -151,7 +165,7 @@ class CJL102LightingMod extends CEntityMod
 	var filterSize : string;
 	var jl102WorldName : string;
 	var blendInTime : float;
-	// var envInteriorEnable : string;
+	var envInteriorEnable : bool; default envInteriorEnable = true;
 	var jliter : int;
 	var jlSize : int;
 	var jl102Debug : bool; default jl102Debug = true;
@@ -171,10 +185,16 @@ class CJL102LightingMod extends CEntityMod
 		if (StrContains(jl102WorldName , "bob"))
 		{
 			envJL102SSR = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_interior_bobFogOnly.env", true);
+			envInteriorEnable = true;
+		}
+		else if (StrContains(jl102WorldName , "kaer"))
+		{
+			envInteriorEnable = false;
 		}
 		else
 		{
 			envJL102SSR = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_interior_generic.env", true);
+			envInteriorEnable = true;
 		}
 		cameraOrigin = envJL102SSR.envParams.m_cameraLightsSetup.gameplayLight0.attenuation.ScalarEditOrigin;
 		cameraAttenuation = envJL102SSR.envParams.m_cameraLightsSetup.gameplayLight0.attenuation.dataCurveValues[0].lue;
@@ -300,7 +320,7 @@ class CJL102LightingMod extends CEntityMod
 			envJL102SSR.envParams.m_cameraLightsSetup.gameplayLight0.attenuation.dataCurveValues[0].lue = cameraAttenuation;
 		}
 
-		if (gameConfigWrapper.GetVarValue('jl102Config', 'envIntEnable'))
+		if (gameConfigWrapper.GetVarValue('jl102Config', 'envIntEnable') && envInteriorEnable)
 		{
 			if (inInterior)
 			{
