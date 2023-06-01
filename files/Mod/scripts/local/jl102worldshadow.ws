@@ -96,7 +96,7 @@ exec function testKaerEnvInt()
 	ActivateEnvironmentDefinition(envKaerInt, 999, 1.0f, 0.0f);
 
 }
-REVOIR LES envProbeBaseLightingReflection, PARCE QUE TROP FAIBLE ÇA NIQUE LES CUBEMAPS ET DONC ON A 0 REFLETS DANS LES ZONES D'OMBRES.
+// REVOIR LES envProbeBaseLightingReflection, PARCE QUE TROP FAIBLE ÇA NIQUE LES CUBEMAPS ET DONC ON A 0 REFLETS DANS LES ZONES D'OMBRES.
 // exec function jl102EnvsDebug()
 // {
 // 	var i : int;
