@@ -96,6 +96,7 @@ exec function testKaerEnvInt()
 	ActivateEnvironmentDefinition(envKaerInt, 999, 1.0f, 0.0f);
 
 }
+IL FAUT RETRAVAILLER (SURTOUT AVEC LES VIEILLES SSR -> CUBEMAPS), les .ENV DE LA PLUIE.
 // REVOIR LES envProbeBaseLightingReflection, PARCE QUE TROP FAIBLE ÇA NIQUE LES CUBEMAPS ET DONC ON A 0 REFLETS DANS LES ZONES D'OMBRES.
 // exec function jl102EnvsDebug()
 // {
