@@ -5,6 +5,12 @@ Wolven kit - 7.2.0.0
 20/05/2023 - Update v4
 */
 
+// À FAIRE :
+// - IL FAUT RETRAVAILLER (SURTOUT AVEC LES VIEILLES SSR -> CUBEMAPS), les .ENV DE LA PLUIE.
+
+// FAIT :
+// - REVOIR LES envProbeBaseLightingReflection, PARCE QUE TROP FAIBLE ÇA NIQUE LES CUBEMAPS ET DONC ON A 0 REFLETS DANS LES ZONES D'OMBRES.
+
 exec function checkEnvInteriorSetting()
 {
 	GetWitcherPlayer().DisplayHudMessage(theGame.GetInGameConfigWrapper().GetVarValue('jl102Config', 'envIntEnable'));
@@ -96,8 +102,7 @@ exec function testKaerEnvInt()
 	ActivateEnvironmentDefinition(envKaerInt, 999, 1.0f, 0.0f);
 
 }
-IL FAUT RETRAVAILLER (SURTOUT AVEC LES VIEILLES SSR -> CUBEMAPS), les .ENV DE LA PLUIE.
-// REVOIR LES envProbeBaseLightingReflection, PARCE QUE TROP FAIBLE ÇA NIQUE LES CUBEMAPS ET DONC ON A 0 REFLETS DANS LES ZONES D'OMBRES.
+
 // exec function jl102EnvsDebug()
 // {
 // 	var i : int;
