@@ -11,6 +11,7 @@ Wolven kit - 7.2.0.0
 
 // FAIT :
 // - REVOIR LES envProbeBaseLightingReflection, PARCE QUE TROP FAIBLE ÇA NIQUE LES CUBEMAPS ET DONC ON A 0 REFLETS DANS LES ZONES D'OMBRES.
+// - Skellige : les env principaux sont faits et validés.
 
 exec function checkEnvInteriorSetting()
 {
