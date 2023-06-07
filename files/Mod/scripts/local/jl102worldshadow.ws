@@ -6,6 +6,7 @@ Wolven kit - 7.2.0.0
 */
 
 // À FAIRE :
+// - Tonemapping (zones sombres trop sombres), dans env_novigrad_sunset.
 // - IL FAUT RETRAVAILLER (SURTOUT AVEC LES VIEILLES SSR -> CUBEMAPS), les .ENV DE LA PLUIE.
 // - Revoir : AMBIENT -> COLORSKYADD et COLORSKYHORIZON (ça manque sûrement de la couleur du ciel car ces valeurs sont trop faibles.)
 
