@@ -6,6 +6,9 @@ Wolven kit - 7.2.0.0
 */
 
 // À FAIRE :
+// Dans env_novigrad_grey_sky.env, réduire colorSkyHorizon et ré-équilibrer, parce qu'on dirait que Géalt est éclairé par le bas et ça va pas, enfin bref je verrai.
+
+// - Tonemapping (zones sombres trop sombres), dans env_novigrad_sunset.
 // - IL FAUT RETRAVAILLER (SURTOUT AVEC LES VIEILLES SSR -> CUBEMAPS), les .ENV DE LA PLUIE.
 // - Revoir : AMBIENT -> COLORSKYADD et COLORSKYHORIZON (ça manque sûrement de la couleur du ciel car ces valeurs sont trop faibles.)
 
@@ -113,7 +116,7 @@ exec function testKaerEnvInt()
 // 	GetActiveAreaEnvironmentDefinitions(envList);
 // 	for (i = 0; i < envList.Size(); i += 1)
 // 	{
-
+// 		??
 // 	}
 // }
 
