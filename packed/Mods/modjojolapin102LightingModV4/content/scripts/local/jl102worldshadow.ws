@@ -6,13 +6,12 @@ Wolven kit - 7.2.0.0
 */
 
 // À FAIRE :
-// Dans env_novigrad_grey_sky.env, réduire colorSkyHorizon et ré-équilibrer, parce qu'on dirait que Géalt est éclairé par le bas et ça va pas, enfin bref je verrai.
-
-// - Tonemapping (zones sombres trop sombres), dans env_novigrad_sunset.
-// - IL FAUT RETRAVAILLER (SURTOUT AVEC LES VIEILLES SSR -> CUBEMAPS), les .ENV DE LA PLUIE.
-// - Revoir : AMBIENT -> COLORSKYADD et COLORSKYHORIZON (ça manque sûrement de la couleur du ciel car ces valeurs sont trop faibles.)
+// - Revoir dans certains envs : AMBIENT -> COLORSKYADD et COLORSKYHORIZON (ça manque sûrement de la couleur du ciel car ces valeurs sont trop faibles.)
 
 // FAIT :
+// - IL FAUT RETRAVAILLER (SURTOUT AVEC LES VIEILLES SSR -> CUBEMAPS), les .ENV DE LA PLUIE.
+// - Dans env_novigrad_grey_sky.env, réduire colorSkyHorizon et ré-équilibrer, parce qu'on dirait que Géalt est éclairé par le bas et ça va pas, enfin bref je verrai.
+// - Tonemapping (zones sombres trop sombres), dans env_novigrad_sunset.
 // - REVOIR LES envProbeBaseLightingReflection, PARCE QUE TROP FAIBLE ÇA NIQUE LES CUBEMAPS ET DONC ON A 0 REFLETS DANS LES ZONES D'OMBRES.
 // - Skellige : les env principaux sont faits et validés.
 
