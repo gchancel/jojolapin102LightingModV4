@@ -5,6 +5,8 @@ Wolven kit - 7.2.0.0
 20/05/2023 - Update v4
 */
 
+// mklink "C:\GOG Games\The Witcher 3 Wild Hunt Complete Edition\bin\config\r4game\user_config_matrix\pc\jl102Lighting.xml" "U:\WolvenKit_WorkingDirectory\jojolapin102LightingModV4\files\bin\config\r4game\user_config_matrix\pc\jl102Lighting.xml"
+
 // À FAIRE :
 // - Revoir dans certains envs : AMBIENT -> COLORSKYADD et COLORSKYHORIZON (ça manque sûrement de la couleur du ciel car ces valeurs sont trop faibles.)
 

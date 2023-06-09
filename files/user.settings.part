@@ -1,0 +1,7 @@
+[Rendering]
+DisableAllCameraLights=false
+DisableBigCameraLights=false
+DisableSmallCameraLights=false
+CascadeShadowMapSize=6144
+[PostProcess]
+AOInteriorMultiplier=1.05
