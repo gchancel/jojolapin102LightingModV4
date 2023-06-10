@@ -190,7 +190,6 @@ class CJL102LightingMod extends CEntityMod
 
 	function initJL102LM()
 	{
-		// envInteriorEnable = gameConfigWrapper.GetVarValue('jl102Config', 'envIntEnable');
 		gameConfigWrapper = theGame.GetInGameConfigWrapper();
 		jl102LM_world = theGame.GetWorld();
 		jl102WorldName = jl102LM_world.GetDepotPath();
@@ -318,7 +317,7 @@ class CJL102LightingMod extends CEntityMod
 	function playerInteriorState(inInterior : bool)
 	{
 		var i : int;
-		var envList : array< string >;
+		var envList : array <string>;
 
 		GetActiveAreaEnvironmentDefinitions(envList);
 		if (envList.Contains("env_novigrad_city"))
@@ -334,6 +333,13 @@ class CJL102LightingMod extends CEntityMod
 
 		if (gameConfigWrapper.GetVarValue('jl102Config', 'envIntEnable') && envInteriorEnable)
 		{
+			if (envList.Contains("env_nml_global_dark_sunset"))
+			{
+				envJL102SSR = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_interior_nml.env", true);
+			else
+			{
+				envJL102SSR = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_interior_generic.env", true);
+			}
 			if (inInterior)
 			{
 				if (jl102Debug)
