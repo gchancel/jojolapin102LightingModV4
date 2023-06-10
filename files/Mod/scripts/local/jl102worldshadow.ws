@@ -336,6 +336,7 @@ class CJL102LightingMod extends CEntityMod
 			if (envList.Contains("env_nml_global_dark_sunset"))
 			{
 				envJL102SSR = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_interior_nml.env", true);
+			}
 			else
 			{
 				envJL102SSR = (CEnvironmentDefinition)LoadResource("dlc\dlcjl102envs\data\environment\definitions\env_jl102_interior_generic.env", true);
